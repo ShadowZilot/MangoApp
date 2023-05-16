@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MangoApp</string>
+    <string name="signIn_title">Регистрация</string>
+    <string name="name_hint">Имя</string>
+    <string name="phone_number_hint">Телефон</string>
+    <string name="register_button_label">Зарегистрироваться</string>
+    <string name="have_account_button_label">У меня есть аккаунт</string>
+    <string name="sign_in_title">Авторизация</string>
+    <string name="sign_in_button_label">Войти</string>
 </resources>
