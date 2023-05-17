@@ -6,9 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.mangoapp.R
 import com.example.mangoapp.base.BaseFragment
 import com.example.mangoapp.base.ResultLogic
+import com.example.mangoapp.base.navigateWithoutBack
 import com.example.mangoapp.databinding.SignInFragmentBinding
 import com.example.mangoapp.phone_codes.CountriesCode
 import com.example.mangoapp.sign_in.domain.SignInViewModel
@@ -25,6 +27,13 @@ class SignInFragment : BaseFragment<SignInFragmentBinding>(R.layout.sign_in_frag
     }
     private val mViewModel by viewModels<SignInViewModel> {
         SignInViewModel.Factory()
+    }
+    private val spinnerArrayAdapter by lazy {
+        CountryAdapter(
+            requireContext(),
+            CountriesCode.Base().codes(),
+            mBinding.countryCodes
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,11 +53,6 @@ class SignInFragment : BaseFragment<SignInFragmentBinding>(R.layout.sign_in_frag
                 }
             }
         )
-        val spinnerArrayAdapter = CountryAdapter(
-            requireContext(),
-            CountriesCode.Base().codes(),
-            mBinding.countryCodes
-        )
         mBinding.countryCodes.adapter = spinnerArrayAdapter
         mBinding.signInPhoneField.hint = listener.placeholder()
         mBinding.countryCodes.setSelection(
@@ -59,7 +63,7 @@ class SignInFragment : BaseFragment<SignInFragmentBinding>(R.layout.sign_in_frag
                 mViewModel.sendAuthCode(
                     mBinding.signInPhoneField.text.toString(),
                     spinnerArrayAdapter.selectedPhoneCode()
-                ).collect {it.map(this@SignInFragment) }
+                ).collect { it.map(this@SignInFragment) }
             }
         }
     }
@@ -70,6 +74,21 @@ class SignInFragment : BaseFragment<SignInFragmentBinding>(R.layout.sign_in_frag
 
     override fun doIfSuccess(data: Boolean) {
         mBinding.loadingCover.visibility = View.GONE
+        findNavController().navigateWithoutBack(
+            R.id.action_signInFragment_to_verificationFragment,
+            Bundle().apply {
+                putString(
+                    "phone",
+                    "+${spinnerArrayAdapter.selectedPhoneCode()}${
+                        mBinding.signInPhoneField.text.toString()
+                            .replace("(", "")
+                            .replace(")", "")
+                            .replace(" ", "")
+                            .replace("-", "")
+                    }"
+                )
+            }
+        )
     }
 
     override fun doIfFailure(message: Int) {

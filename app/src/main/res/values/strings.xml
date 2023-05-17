@@ -11,4 +11,5 @@
     <string name="verification_code_hint">Код</string>
     <string name="verification_button_label">Подтвердить</string>
     <string name="something_went_wrong">Что-то пошло не так!\nПовторите попытку позже</string>
+    <string name="wrong_code">Неверный код!</string>
 </resources>

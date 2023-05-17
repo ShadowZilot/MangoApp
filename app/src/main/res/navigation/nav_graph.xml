@@ -9,5 +9,25 @@
         android:id="@+id/signInFragment"
         android:name="com.example.mangoapp.sign_in.ui.SignInFragment"
         android:label="@string/registration_title"
-        tools:layout="@layout/sign_in_fragment" />
+        tools:layout="@layout/sign_in_fragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="com.example.mangoapp.verification.ui.VerificationFragment"
+        android:label="@string/verification_button_label"
+        tools:layout="@layout/verification_code_fragment">
+        <action
+            android:id="@+id/action_verificationFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.mangoapp.registration.ui.RegistrationFragment"
+        android:label="@string/registration_title"
+        tools:layout="@layout/registration_fragment"/>
 </navigation>
