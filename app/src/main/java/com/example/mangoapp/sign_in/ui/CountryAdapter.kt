@@ -3,10 +3,7 @@ package com.example.mangoapp.sign_in.ui
 import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.example.mangoapp.phone_codes.CountryCode
-import com.example.mangoapp.phone_codes.CountryCodeToString
-import com.example.mangoapp.phone_codes.CountryToShortString
-import com.example.mangoapp.phone_codes.IsSameCountryCode
+import com.example.mangoapp.phone_codes.*
 
 class CountryAdapter(
     context: Context,
@@ -20,6 +17,10 @@ class CountryAdapter(
         return mCountries.indexOf(mCountries.find {
             it.map(comparator)
         })
+    }
+
+    fun selectedPhoneCode() : Int {
+        return mCountries[mSpinner.selectedItemPosition].map(PhoneCode())
     }
 
     override fun getItem(position: Int): String {
