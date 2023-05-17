@@ -7,4 +7,7 @@
     <string name="have_account_button_label">У меня есть аккаунт</string>
     <string name="sign_in_title">Авторизация</string>
     <string name="sign_in_button_label">Войти</string>
+    <string name="verification_code_title">Введите код подтверждения</string>
+    <string name="verification_code_hint">Код</string>
+    <string name="verification_button_label">Подтвердить</string>
 </resources>
