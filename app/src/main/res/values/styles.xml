@@ -9,4 +9,8 @@
         <item name="android:background">@color/purple_500</item>
         <item name="android:textColor">@color/white</item>
     </style>
+    <style name="TextError">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#C63030</item>
+    </style>
 </resources>
