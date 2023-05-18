@@ -1,5 +1,6 @@
 package com.example.mangoapp.sign_in.cloud
 
+import org.json.JSONException
 import org.json.JSONObject
 
 data class SignInData(
@@ -12,7 +13,7 @@ data class SignInData(
         item.getString("refresh_token"),
         item.getString("access_token"),
         item.getLong("user_id"),
-        item.getBoolean("is_user_exists")
+        try { item.getBoolean("is_user_exists") } catch (e: JSONException) { true }
     )
 
     fun <T> map(mapper: Mapper<T>) = mapper.map(

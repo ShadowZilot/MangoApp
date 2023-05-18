@@ -60,6 +60,7 @@ interface UsernameErrorWatch {
             val symbolCode = symbol.code
             return symbolCode in 'A'.code..'Z'.code
                     || symbolCode in 'a'.code..'z'.code
+                    || symbolCode in '0'.code..'9'.code
                     || symbolCode == '-'.code || symbolCode == '_'.code
         }
     }
