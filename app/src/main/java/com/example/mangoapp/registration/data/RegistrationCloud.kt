@@ -34,8 +34,11 @@ interface RegistrationCloud {
                 val body = JSONObject(response.body!!.string())
                 val authData = SignInData(body)
                 response.close()
-                authData.map(CheckJwt.Base(mClient))
-                authData
+                if (authData.map(CheckJwt.Base(mClient))) {
+                    authData
+                } else {
+                    throw Exception()
+                }
             } else {
                 throw Exception()
             }

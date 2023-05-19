@@ -14,4 +14,6 @@
     <string name="wrong_code">Неверный код!</string>
     <string name="username_hint">Никнейм</string>
     <string name="error_username_label">Можно использовать только символы от A - Z, и от a - z, цифры и символы - _</string>
+    <string name="image_of_user_desc">Image of user</string>
+    <string name="edit_label">Редактировать</string>
 </resources>

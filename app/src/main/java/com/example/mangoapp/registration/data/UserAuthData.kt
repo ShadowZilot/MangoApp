@@ -41,7 +41,13 @@ interface UserAuthData : SignInData.Mapper<Unit> {
             private var mInstance: UserAuthData? = null
 
             fun create(context: Context) {
+                if (mInstance == null) {
+                    mInstance = Base(context)
+                }
+            }
 
+            operator fun invoke() : UserAuthData {
+                return mInstance ?: throw java.lang.Exception()
             }
         }
     }

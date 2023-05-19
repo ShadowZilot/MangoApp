@@ -87,11 +87,7 @@ class RegistrationFragment : BaseFragment<RegistrationFragmentBinding>(
 
     override fun doIfSuccess(data: SignInData) {
         mBinding.loadingCover.visibility = View.GONE
-        Toast.makeText(
-            requireContext(),
-            data.toString(),
-            Toast.LENGTH_LONG
-        ).show()
+
     }
 
     override fun doIfFailure(message: Int) {
