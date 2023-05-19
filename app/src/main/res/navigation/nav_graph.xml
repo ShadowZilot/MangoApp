@@ -23,11 +23,24 @@
         <action
             android:id="@+id/action_verificationFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_verificationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.mangoapp.registration.ui.RegistrationFragment"
         android:label="@string/registration_title"
-        tools:layout="@layout/registration_fragment"/>
+        tools:layout="@layout/registration_fragment">
+        <action
+            android:id="@+id/action_registrationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mangoapp.profile.ui.ProfileFragment"
+        android:label="@string/registration_title"
+        tools:layout="@layout/profile_fragment"/>
 </navigation>

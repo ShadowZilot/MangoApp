@@ -11,6 +11,7 @@ import com.example.mangoapp.base.BaseFragment
 import com.example.mangoapp.base.ResultLogic
 import com.example.mangoapp.base.navigateWithoutBack
 import com.example.mangoapp.databinding.VerificationCodeFragmentBinding
+import com.example.mangoapp.registration.data.UserAuthData
 import com.example.mangoapp.sign_in.cloud.IsUserExist
 import com.example.mangoapp.sign_in.cloud.SignInData
 import com.example.mangoapp.verification.domain.VerificationViewModel
@@ -44,7 +45,10 @@ class VerificationFragment : BaseFragment<VerificationCodeFragmentBinding>(
     override fun doIfSuccess(data: SignInData) {
         mBinding.loadingCover.visibility = View.GONE
         if (data.map(IsUserExist())) {
-            Toast.makeText(requireContext(), "Обнял", Toast.LENGTH_SHORT).show()
+            data.map(UserAuthData.Base.Instance.invoke())
+            findNavController().navigateWithoutBack(
+                R.id.action_verificationFragment_to_profileFragment
+            )
         } else {
             findNavController().navigateWithoutBack(
                 R.id.action_verificationFragment_to_registrationFragment,

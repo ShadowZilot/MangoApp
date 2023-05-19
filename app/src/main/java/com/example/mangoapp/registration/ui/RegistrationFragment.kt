@@ -6,9 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.mangoapp.R
 import com.example.mangoapp.base.BaseFragment
 import com.example.mangoapp.base.ResultLogic
+import com.example.mangoapp.base.navigateWithoutBack
 import com.example.mangoapp.databinding.RegistrationFragmentBinding
 import com.example.mangoapp.phone_codes.CountriesCode
 import com.example.mangoapp.registration.data.UserAuthData
@@ -87,7 +89,9 @@ class RegistrationFragment : BaseFragment<RegistrationFragmentBinding>(
 
     override fun doIfSuccess(data: SignInData) {
         mBinding.loadingCover.visibility = View.GONE
-
+        findNavController().navigateWithoutBack(
+            R.id.action_registrationFragment_to_profileFragment
+        )
     }
 
     override fun doIfFailure(message: Int) {
